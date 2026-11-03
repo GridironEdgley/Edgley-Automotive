@@ -42,12 +42,12 @@ export default function HomePage() {
               <article className="principle">
                 <span className="principle-num">02 — MOBILE</span>
                 <h3>At your vehicle</h3>
-                <p>Mobile detailing across the Dallas–Fort Worth area. Specific availability and service area details should be confirmed directly.</p>
+                <p>Mobile detailing across the Fort Worth area. Specific availability and service area details should be confirmed directly.</p>
               </article>
               <article className="principle">
                 <span className="principle-num">03 — NO SHORTCUTS</span>
                 <h3>Inside and out</h3>
-                <p>Interior and exterior detailing are the focus. The work is about the whole vehicle, not just the easy-to-see parts.</p>
+                <p>Interior and exterior detailing are the focus. The work is about the vehicle, not just the easy-to-see parts.</p>
               </article>
             </div>
           </div>
