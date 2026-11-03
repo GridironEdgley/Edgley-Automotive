@@ -256,6 +256,33 @@ export default function LearnPage() {
               <h2>Work backward from what you can see.</h2>
               <p>Reverse engineering means starting with an object or program you can observe, then tracing clues to understand how it works. For web development, that can mean noticing what a button does, finding the matching component, and testing which style controls its appearance.</p>
               <p>Use this skill on your own projects, or on code and products you have permission to study. Don’t use it to break into accounts, get around payments or access controls, or take private information from someone else’s system.</p>
+              <h3>REA is a toolset that can help</h3>
+              <p><strong>REA</strong> stands for <em>Reverse Engineer Anything</em>. It is a separate, open-source toolset that can connect an AI coding assistant to software-inspection tools. REA is not the AI itself, and it is not a magic “understand anything” button.</p>
+              <div className="concept-strip">
+                <div><strong>1. You choose</strong><span>Pick one behavior in a program you’re allowed to study.</span></div>
+                <div><strong>2. The agent asks</strong><span>MCP is the connector that lets the assistant call REA tools.</span></div>
+                <div><strong>3. REA inspects</strong><span>It returns evidence from the supported program or its behavior.</span></div>
+                <div><strong>4. You verify</strong><span>The agent explains the evidence; you check it with a test.</span></div>
+              </div>
+              <p>What REA can inspect depends on the kind of program and the tools set up for it. Its guides cover web pages and JavaScript apps as well as more advanced software formats. Start with your own small web project; the advanced formats can wait.</p>
+              <h3>How to use REA well</h3>
+              <ol>
+                <li>Ask one specific question, such as “How does this button export a file?” Avoid asking it to explain an entire app at once.</li>
+                <li>Tell the assistant which authorized project to inspect and ask it to show the evidence or file locations behind its answer.</li>
+                <li>Ask it to separate what it actually found from what it is guessing.</li>
+                <li>Start with read-only investigation. Review any plan before allowing an assistant to change files or run actions.</li>
+                <li>Make a prediction, test it on a safe copy or demo, and compare the result with the explanation.</li>
+              </ol>
+              <CodeBlock label="A beginner-friendly REA prompt">{`Use REA on my own demo project. Explain how the
+service-card title is displayed. Show the evidence or
+files you used, separate facts from guesses, and do not
+change anything. Suggest one small test I can try.`}</CodeBlock>
+              <div className="notice">
+                <strong>Privacy and setup:</strong> REA analyzes a target on your computer, but its findings are sent to the connected AI assistant. Check that assistant’s privacy rules, and never include passwords, private keys, or customer data. REA is not installed or connected to this Replit project.
+              </div>
+              <p className="rea-links">
+                Learn more from the <a href="https://morluto.github.io/rea/" target="_blank" rel="noreferrer">REA project guide</a>, its <a href="https://morluto.github.io/rea/get-started/" target="_blank" rel="noreferrer">setup guide</a>, and the <a href="https://github.com/morluto/rea" target="_blank" rel="noreferrer">source repository</a>.
+              </p>
               <h3>A repeatable learning loop</h3>
               <ol>
                 <li><strong>Observe:</strong> What do you see? What exact action causes it?</li>
