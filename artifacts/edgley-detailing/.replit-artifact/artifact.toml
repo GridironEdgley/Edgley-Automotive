@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Edgley Automotive Detailing"
+description = "A branded website for Edgley Automotive Detailing in Dallas–Fort Worth, with a companion learning page explaining the app code, GitHub, and Supabase."
+version = "1.0.0"
+id = "artifacts/edgley-detailing"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23599
+
+[services.development]
+run = "pnpm --filter @workspace/edgley-detailing run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/edgley-detailing", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/edgley-detailing/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23599"
+BASE_PATH = "/"
