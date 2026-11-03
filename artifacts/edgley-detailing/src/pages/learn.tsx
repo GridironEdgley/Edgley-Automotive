@@ -86,10 +86,10 @@ function HeadlinePractice() {
 function ReverseEngineerLab() {
   const [title, setTitle] = useState('Interior detailing');
   const [spacing, setSpacing] = useState(20);
-  const [accent, setAccent] = useState<'red' | 'cream' | 'mint'>('red');
+  const [accent, setAccent] = useState<'yellow' | 'cream' | 'mint'>('yellow');
   const [showExplanation, setShowExplanation] = useState(false);
   const accents = {
-    red: '#c8102e',
+    yellow: '#f5d21b',
     cream: '#d8d3c5',
     mint: '#70c8b2',
   };
@@ -125,7 +125,7 @@ function ReverseEngineerLab() {
             value={accent}
             onChange={(event) => setAccent(event.target.value as keyof typeof accents)}
           >
-            <option value="red">Red</option>
+            <option value="yellow">Yellow</option>
             <option value="cream">Cream</option>
             <option value="mint">Mint</option>
           </select>
@@ -520,7 +520,7 @@ git remote`}</CodeBlock>
         </div>
         <div className="learn-end">
           <div><div className="eyebrow">Back to the business</div><p>Return to Edgley's service overview.</p></div>
-          <Link href="/" className="button-red" data-testid="link-return-home">Return to home <span aria-hidden="true">→</span></Link>
+          <Link href="/" className="button-yellow" data-testid="link-return-home">Return to home <span aria-hidden="true">→</span></Link>
         </div>
       </main>
     </>

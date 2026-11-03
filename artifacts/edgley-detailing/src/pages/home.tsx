@@ -12,7 +12,7 @@ export default function HomePage() {
             <h1>Clean lines.<br /><span>No shortcuts.</span></h1>
             <p className="hero-copy">Owner-operated mobile automotive detailing, with care for the details inside and out. Edgley brings a hands-on approach to the vehicle you depend on every day.</p>
             <div className="hero-actions">
-              <a className="button-red" href="#services" data-testid="link-explore-services">Explore services <ArrowRight size={15} /></a>
+              <a className="button-yellow" href="#services" data-testid="link-explore-services">Explore services <ArrowRight size={15} /></a>
               <a className="text-link" href="#contact" data-testid="link-contact-information">How to get in touch</a>
             </div>
           </div>
@@ -107,7 +107,7 @@ export default function HomePage() {
       </main>
       <div className="learn-end">
         <div><div className="eyebrow">Curious about the build?</div><p>This website is a small React app. See the beginner guide to how it works.</p></div>
-        <Link className="button-red" href="/learn" data-testid="link-learning-guide">Open the learning guide <ArrowRight size={15} /></Link>
+        <Link className="button-yellow" href="/learn" data-testid="link-learning-guide">Open the learning guide <ArrowRight size={15} /></Link>
       </div>
     </>
   );
