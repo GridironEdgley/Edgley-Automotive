@@ -460,19 +460,41 @@ Then give me one safe exercise and a way to undo it.`}</CodeBlock>
             </section>
             <section id="git">
               <div className="section-kicker">09 / Keeping a history</div>
-              <h2>Git gives you a rewind button.</h2>
-              <p>Git is the change-history tool; GitHub is a place to keep a copy of a Git project online. You can start with the Replit version-control tools instead of typing commands. If the project is connected to a GitHub repository, the same basic cycle can be done in a terminal:</p>
-              <CodeBlock label="A simple Git workflow">{`git status
-git add src/pages/home.tsx src/index.css
-git commit -m "Refine service page copy"
-git push`}</CodeBlock>
+              <h2>Put this website on GitHub.</h2>
+              <p><strong>Git</strong> keeps a history of code changes. A <strong>commit</strong> is a named snapshot in that history. <strong>GitHub</strong> stores a copy online, and <strong>push</strong> sends your committed snapshots there. Making a commit and pushing it are two separate steps.</p>
+              <div className="notice">
+                <strong>Important for this Replit project:</strong> Git is already set up on the <code>main</code> branch. It also has a Replit-managed destination named <code>gitsafe-backup</code>; keep it and add GitHub as a second destination. The repository is the whole shared workspace, so it includes the Edgley website and shared project files—not only the <code>artifacts/edgley-detailing</code> folder.
+              </div>
+              <h3>One-time setup</h3>
               <ol>
-                <li><code>git status</code> shows which files changed.</li>
-                <li><code>git add</code> selects the edits for the next snapshot.</li>
-                <li><code>git commit</code> saves a named checkpoint locally.</li>
-                <li><code>git push</code> sends committed changes to the configured remote repository, such as GitHub. It only works after a remote repository has been connected.</li>
+                <li>
+                  On GitHub, create a <strong>new, empty, private repository</strong>. A name like <code>edgley-detailing-website</code> works. Leave the README, license, and GitHub-provided <code>.gitignore</code> unchecked: this Replit project already has its own files and history. See GitHub’s <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository" target="_blank" rel="noreferrer">new repository guide</a>.
+                </li>
+                <li>
+                  Back in Replit, open <strong>Tools → Git</strong>. Review the changed files, stage only the files you intend to save, and make a commit with a clear message, such as <code>Add GitHub learning guide</code>. You can use this screen to review and commit; the command below makes the push destination explicit.
+                </li>
+                <li>
+                  Open Replit’s Shell at the project root. Add the GitHub repository as a second destination. Replace <code>YOUR-USERNAME</code> with your GitHub username; if you chose a different repository name, change that part of the URL too:
+                  <CodeBlock label="Add GitHub without replacing Replit's destination">{`git remote add github https://github.com/YOUR-USERNAME/edgley-detailing-website.git
+git remote`}</CodeBlock>
+                  The second command lists the remote names. You should see both <code>gitsafe-backup</code> and <code>github</code>.
+                </li>
+                <li>
+                  Send the committed project history to GitHub:
+                  <CodeBlock label="First push to GitHub">{`git push github main`}</CodeBlock>
+                  The first push may take a little while. When it finishes, refresh the GitHub repository page and check that you can see the project files.
+                </li>
               </ol>
-              <p>A GitHub copy can help if an account or project becomes unavailable, but only if you connected it and pushed your changes. Before pushing, review the changes and keep credentials and private information out of the repository.</p>
+              <h3>Each time you make more changes</h3>
+              <ol>
+                <li>Edit a small piece of code and check the Replit preview.</li>
+                <li>In <strong>Tools → Git</strong>, review the files, stage the intended changes, and commit them with a short description.</li>
+                <li>In Shell, run <code>git push github main</code>. This sends the new commit to GitHub; committing alone does not upload it.</li>
+              </ol>
+              <div className="notice">
+                <strong>Protect your work:</strong> A private repository is a good starting choice. Review the files before committing, and never add passwords, API keys, access tokens, or private connection details. If Replit asks to remove or replace the existing remote, cancel and get help instead. If Git reports a rejected push or a conflict, do not use “force push”—stop and ask what the message means.
+              </div>
+              <p>If the command says <code>remote github already exists</code>, don’t add it again. If it asks you to sign in, use Replit’s GitHub authorization flow; never paste a password or access token into chat or save one in your code. For Replit’s visual Git tools, see the official <a href="https://docs.replit.com/features/workspace-tools/git-interface" target="_blank" rel="noreferrer">Git pane guide</a>.</p>
             </section>
             <section id="supabase">
               <div className="section-kicker">10 / A possible next layer</div>
