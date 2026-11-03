@@ -181,6 +181,7 @@ export default function LearnPage() {
             <a href="#reverse-engineering" data-testid="link-learn-reverse">Reverse engineering</a>
             <a href="#ai" data-testid="link-learn-ai">Grok &amp; AI helpers</a>
             <a href="#toolkit" data-testid="link-learn-toolkit">Developer tools</a>
+            <a href="#apis-tools" data-testid="link-learn-apis">APIs, MCP &amp; Vercel</a>
             <a href="#debugging" data-testid="link-learn-debugging">Fixing problems</a>
             <a href="#git" data-testid="link-learn-git">Git + GitHub</a>
             <a href="#supabase" data-testid="link-learn-supabase">What Supabase adds</a>
@@ -402,8 +403,50 @@ Then give me one safe exercise and a way to undo it.`}</CodeBlock>
                 </article>
               </div>
             </section>
+            <section id="apis-tools">
+              <div className="section-kicker">07 / Connecting and sharing software</div>
+              <h2>APIs, MCP, Postman, and Vercel.</h2>
+              <p>These names describe different jobs. An API lets programs exchange information. MCP lets an AI app connect to tools. Postman helps you test an API. Vercel can host a website and publish updates.</p>
+              <h3>An API is a conversation between programs</h3>
+              <p>An API is a set of rules for asking another program for information or an action. The program sends a request to an address called an endpoint. The response often includes a status number and data in a format called JSON.</p>
+              <div className="concept-strip">
+                <div><strong>GET</strong><span>Ask to read information.</span></div>
+                <div><strong>POST</strong><span>Ask to send or create information.</span></div>
+                <div><strong>Status</strong><span>A number that summarizes the result.</span></div>
+                <div><strong>JSON</strong><span>A structured way to package data.</span></div>
+              </div>
+              <h3>Try a read-only request in Postman</h3>
+              <p>Postman is a tool for sending API requests and looking at the replies. The Postman Echo service safely sends back details of your test request, so you can learn without connecting to a real customer database.</p>
+              <ol>
+                <li>Open Postman and create a new HTTP request.</li>
+                <li>Choose <code>GET</code>, then enter this address:</li>
+              </ol>
+              <CodeBlock label="Postman Echo practice">{`https://postman-echo.com/get?lesson=first-api`}</CodeBlock>
+              <ol start={3}>
+                <li>Press <strong>Send</strong> and look at the response. Find the <code>lesson</code> value in the returned JSON.</li>
+                <li>Change <code>first-api</code> to another harmless word, send again, and predict what value will come back.</li>
+              </ol>
+              <p>This is a read-only practice request. Don’t put passwords, API keys, or personal information in a URL or test request. Postman collections can save requests; review them before sharing so private values aren’t included.</p>
+              <h3>MCP connects an AI assistant to tools</h3>
+              <p><strong>MCP</strong> means Model Context Protocol. It is a shared way for AI apps to discover and use tools or read information from other programs. An MCP server is a program that offers those capabilities. For example, REA from the earlier section uses MCP to offer inspection tools to a compatible AI assistant.</p>
+              <p>MCP is not the same thing as an API, though an MCP tool may use an API behind the scenes. Some MCP tools only read information; others can edit files, send messages, or change data. Before connecting one, check who made it, what it can access, and whether you can review actions before they happen.</p>
+              <h3>Vercel hosts and publishes websites</h3>
+              <p>Vercel is a website hosting platform. When a project is connected to a Git provider, Vercel can build preview versions from code changes and publish the production version from a chosen branch. A preview is for checking; production is the version visitors see.</p>
+              <div className="concept-strip">
+                <div><strong>GitHub</strong><span>Keeps the project’s code and history.</span></div>
+                <div><strong>Vercel</strong><span>Builds and hosts a website from that code.</span></div>
+                <div><strong>Postman</strong><span>Tests an API without clicking through the site.</span></div>
+                <div><strong>MCP</strong><span>Lets a compatible AI app use approved tools.</span></div>
+              </div>
+              <div className="notice">
+                <strong>For this Edgley site:</strong> These are learning examples, not connected services. The site does not currently send quote requests to an API, and it is not configured with Postman, MCP, or Vercel. Its current preview and hosting remain in Replit.
+              </div>
+              <p className="tool-links">
+                Official guides: <a href="https://learning.postman.com/docs/reference/developer-resources/echo-api" target="_blank" rel="noreferrer">Postman Echo</a>, <a href="https://modelcontextprotocol.io/docs/learn/server-concepts" target="_blank" rel="noreferrer">MCP servers</a>, and <a href="https://vercel.com/docs/git" target="_blank" rel="noreferrer">Vercel with Git</a>.
+              </p>
+            </section>
             <section id="debugging">
-              <div className="section-kicker">07 / When something breaks</div>
+              <div className="section-kicker">08 / When something breaks</div>
               <h2>Debug one clue at a time.</h2>
               <p>Debugging means finding the cause of a problem instead of guessing at fixes. Try this calm, repeatable order:</p>
               <ol>
@@ -416,7 +459,7 @@ Then give me one safe exercise and a way to undo it.`}</CodeBlock>
               <div className="notice"><strong>A good debugging habit:</strong> Save a Git checkpoint before a large change. That gives you a known-good version to return to.</div>
             </section>
             <section id="git">
-              <div className="section-kicker">08 / Keeping a history</div>
+              <div className="section-kicker">09 / Keeping a history</div>
               <h2>Git gives you a rewind button.</h2>
               <p>Git is the change-history tool; GitHub is a place to keep a copy of a Git project online. You can start with the Replit version-control tools instead of typing commands. If the project is connected to a GitHub repository, the same basic cycle can be done in a terminal:</p>
               <CodeBlock label="A simple Git workflow">{`git status
@@ -432,7 +475,7 @@ git push`}</CodeBlock>
               <p>A GitHub copy can help if an account or project becomes unavailable, but only if you connected it and pushed your changes. Before pushing, review the changes and keep credentials and private information out of the repository.</p>
             </section>
             <section id="supabase">
-              <div className="section-kicker">09 / A possible next layer</div>
+              <div className="section-kicker">10 / A possible next layer</div>
               <h2>What would Supabase add?</h2>
               <p>Supabase is a hosted platform that can provide a Postgres database, authentication, file storage, and APIs. A database becomes useful when the site needs to remember information—for example, storing real quote requests or letting the owner update services without editing code.</p>
               <h3>A simple data shape</h3>
