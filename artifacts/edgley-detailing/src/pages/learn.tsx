@@ -269,6 +269,18 @@ export default function LearnPage() {
               <p>Change its words, spacing, or border color. Before each change, guess what you expect; then use “What changed?” to see the idea. Next, use the same observe-and-trace loop on a real service tile on the home page.</p>
               <ReverseEngineerLab />
               <p>For the real page, start in <code>src/pages/home.tsx</code>. Find a visible phrase, check its <code>className</code>, then search for that class in <code>src/index.css</code>. The Inspector’s Elements panel can help show the rendered element and its styles, but the source files are where you make lasting edits.</p>
+              <h3 id="reverse-github">Use GitHub to trace a project</h3>
+              <p>GitHub can help you reverse engineer a codebase by showing its files and how they changed over time. Only study repositories you own, have permission to use, or are allowed to inspect under their license.</p>
+              <ol>
+                <li>Open the repository’s file list. Read <code>README</code> first; it often explains what the project does.</li>
+                <li>Search for a phrase you can see on the page. Open the matching file to find the component that displays it.</li>
+                <li>Follow clues such as imports and <code>className</code> values to find related components or styles.</li>
+                <li>Open that file’s change history. Pick a change and read the “diff”—a view that marks added and removed lines—so you can see what changed.</li>
+                <li>Compare the code with the live Preview, then write one sentence about how the change affects what you see.</li>
+              </ol>
+              <div className="notice">
+                <strong>For this project:</strong> A GitHub connection has not been confirmed. You can practice the same file-tracing steps in Replit’s file browser and version history. A GitHub backup only exists after a repository is connected and changes are pushed to it.
+              </div>
             </section>
             <section id="ai">
               <div className="section-kicker">05 / Working with AI</div>
