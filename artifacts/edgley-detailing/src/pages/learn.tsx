@@ -465,6 +465,9 @@ Then give me one safe exercise and a way to undo it.`}</CodeBlock>
               <div className="notice">
                 <strong>Important for this Replit project:</strong> Git is already set up on the <code>main</code> branch. It also has a Replit-managed destination named <code>gitsafe-backup</code>; keep it and add GitHub as a second destination. The repository is the whole shared workspace, so it includes the Edgley website and shared project files—not only the <code>artifacts/edgley-detailing</code> folder.
               </div>
+              <div className="notice">
+                <strong>Prefer to sync only when you choose?</strong> In Replit, open <strong>Tools → Git</strong> and turn the <strong>Auto-sync</strong> toggle off. You can still make commits and run <code>git push github main</code> whenever you decide the changes are ready. Adding a GitHub destination by itself does not upload your code.
+              </div>
               <h3>One-time setup</h3>
               <ol>
                 <li>
