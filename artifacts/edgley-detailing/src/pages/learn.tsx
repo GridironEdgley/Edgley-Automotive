@@ -13,7 +13,7 @@ const practiceSteps = [
 ];
 
 function HeadlinePractice() {
-  const [phrase, setPhrase] = useState('No shortcuts.');
+  const [phrase, setPhrase] = useState('Work Hard.');
   const [completed, setCompleted] = useState<string[]>([]);
   const isComplete = (step: string) => completed.includes(step);
 
@@ -83,6 +83,87 @@ function HeadlinePractice() {
   );
 }
 
+function ReverseEngineerLab() {
+  const [title, setTitle] = useState('Interior detailing');
+  const [spacing, setSpacing] = useState(20);
+  const [accent, setAccent] = useState<'yellow' | 'cream' | 'mint'>('yellow');
+  const [showExplanation, setShowExplanation] = useState(false);
+  const accents = {
+    yellow: '#f5d21b',
+    cream: '#d8d3c5',
+    mint: '#70c8b2',
+  };
+
+  return (
+    <>
+      <div className="reverse-lab">
+        <div className="reverse-controls">
+          <div className="practice-label">Change one part at a time</div>
+          <label className="practice-input-label" htmlFor="reverse-title">Card title</label>
+          <input
+            id="reverse-title"
+            className="practice-input"
+            value={title}
+            maxLength={50}
+            onChange={(event) => setTitle(event.target.value)}
+          />
+          <label className="practice-input-label" htmlFor="reverse-spacing">Space inside the card: {spacing}px</label>
+          <input
+            id="reverse-spacing"
+            className="reverse-range"
+            type="range"
+            min="12"
+            max="36"
+            step="4"
+            value={spacing}
+            onChange={(event) => setSpacing(Number(event.target.value))}
+          />
+          <label className="practice-input-label" htmlFor="reverse-accent">Border color</label>
+          <select
+            id="reverse-accent"
+            className="practice-input"
+            value={accent}
+            onChange={(event) => setAccent(event.target.value as keyof typeof accents)}
+          >
+            <option value="yellow">Yellow</option>
+            <option value="cream">Cream</option>
+            <option value="mint">Mint</option>
+          </select>
+          <button
+            className="reverse-toggle"
+            type="button"
+            onClick={() => setShowExplanation((visible) => !visible)}
+            aria-expanded={showExplanation}
+            data-testid="button-reverse-explanation"
+          >
+            {showExplanation ? 'Hide the explanation' : 'What changed?'}
+          </button>
+        </div>
+        <article
+          className="reverse-preview"
+          style={{ padding: `${spacing}px`, borderTopColor: accents[accent] }}
+          aria-live="polite"
+        >
+          <div className="practice-label">Live sample</div>
+          <h3>{title || 'Your card title'}</h3>
+          <p>Change a control and watch this card update. This sample is separate from the real business page.</p>
+        </article>
+      </div>
+      {showExplanation && (
+        <div className="notice reverse-explanation">
+          <strong>You changed three kinds of information:</strong> the title is text, the padding controls space, and the accent is a color. In a real website, those values come from a component and its CSS. The visible result is a clue about which part of the code to look for.
+        </div>
+      )}
+      <CodeBlock label="Simplified example, not the exact site source">{`<article style={{
+  padding: "${spacing}px",
+  borderTopColor: "${accents[accent]}"
+}}>
+  <h3>${title || 'Your card title'}</h3>
+</article>`}</CodeBlock>
+    </>
+  );
+}
+
 export default function LearnPage() {
   return (
     <>
@@ -97,7 +178,8 @@ export default function LearnPage() {
             <a href="#react" data-testid="link-learn-react">React + TypeScript</a>
             <a href="#practice" data-testid="link-learn-practice">Try a small edit</a>
             <a href="#files" data-testid="link-learn-files">Finding the code</a>
-            <a href="#ai" data-testid="link-learn-ai">AI for beginners</a>
+            <a href="#reverse-engineering" data-testid="link-learn-reverse">Reverse engineering</a>
+            <a href="#ai" data-testid="link-learn-ai">Grok &amp; AI helpers</a>
             <a href="#toolkit" data-testid="link-learn-toolkit">Developer tools</a>
             <a href="#debugging" data-testid="link-learn-debugging">Fixing problems</a>
             <a href="#git" data-testid="link-learn-git">Git + GitHub</a>
@@ -169,15 +251,36 @@ export default function LearnPage() {
                 <div><strong>React</strong><span>How pieces update and fit together</span></div>
               </div>
             </section>
+            <section id="reverse-engineering">
+              <div className="section-kicker">04 / Learn by reverse engineering</div>
+              <h2>Work backward from what you can see.</h2>
+              <p>Reverse engineering means starting with an object or program you can observe, then tracing clues to understand how it works. For web development, that can mean noticing what a button does, finding the matching component, and testing which style controls its appearance.</p>
+              <p>Use this skill on your own projects, or on code and products you have permission to study. Don’t use it to break into accounts, get around payments or access controls, or take private information from someone else’s system.</p>
+              <h3>A repeatable learning loop</h3>
+              <ol>
+                <li><strong>Observe:</strong> What do you see? What exact action causes it?</li>
+                <li><strong>Predict:</strong> Which word, button, component, or style might control it?</li>
+                <li><strong>Trace:</strong> Search the project for visible text, then follow the component’s <code>className</code> to its CSS.</li>
+                <li><strong>Change one thing:</strong> Make a small edit and predict what should happen.</li>
+                <li><strong>Compare:</strong> Check the Preview, including a phone-size screen. Undo the edit if it did something else.</li>
+                <li><strong>Explain:</strong> Say what you changed and why the page changed. Ask an AI helper to check your explanation, not just do the work for you.</li>
+              </ol>
+              <h3>Try it with this sample card</h3>
+              <p>Change its words, spacing, or border color. Before each change, guess what you expect; then use “What changed?” to see the idea. Next, use the same observe-and-trace loop on a real service tile on the home page.</p>
+              <ReverseEngineerLab />
+              <p>For the real page, start in <code>src/pages/home.tsx</code>. Find a visible phrase, check its <code>className</code>, then search for that class in <code>src/index.css</code>. The Inspector’s Elements panel can help show the rendered element and its styles, but the source files are where you make lasting edits.</p>
+            </section>
             <section id="ai">
-              <div className="section-kicker">04 / Working with AI</div>
-              <h2>AI can help you learn. You stay in charge.</h2>
+              <div className="section-kicker">05 / Working with AI</div>
+              <h2>Use Grok and other AI helpers as tutors.</h2>
               <p>An AI assistant is a tool you can talk to in everyday language. It can explain code, suggest an example, or help investigate an error. It does not understand your project perfectly and can confidently suggest something incorrect, so treat its answer as a draft—not a command.</p>
+              <p>Grok, made by xAI, is one AI assistant. You can ask it to explain a small code example or make you a practice question, just as you can with other AI helpers. Replit Agent can work with files in this project when you ask it to; a separate chatbot usually only sees what you share with it. Don’t assume any chatbot can see your workspace.</p>
               <h3>A useful first prompt</h3>
               <p>Tell the assistant who you are, what you want, what it should avoid changing, and how simple the explanation should be.</p>
-              <CodeBlock label="Copy this idea, then make it your own">{`I'm new to coding. In this Edgley website, explain
-src/pages/home.tsx in simple terms. Don't edit any files.
-Give me one safe change to try and tell me how to check it.`}</CodeBlock>
+              <CodeBlock label="Try this with Grok or another tutor">{`I'm learning by doing. Explain this code in simple
+words, but don't change it. Ask me to predict what will
+happen if I change the card's padding from 20px to 24px.
+Then give me one safe exercise and a way to undo it.`}</CodeBlock>
               <div className="concept-strip">
                 <div><strong>Ask for an explanation</strong><span>“What does this line do?”</span></div>
                 <div><strong>Ask for a small change</strong><span>“Change only this heading.”</span></div>
@@ -190,10 +293,11 @@ Give me one safe change to try and tell me how to check it.`}</CodeBlock>
                 <li>Ask for one change at a time, then read the summary and inspect what changed.</li>
                 <li>Use the Preview and type check to verify the result. “The AI said it works” is not a test.</li>
                 <li>If you do not understand a change, ask the assistant to explain it before accepting it.</li>
+                <li>For a bot that can take actions, ask what it plans to do and review before it runs commands, publishes, or sends messages.</li>
               </ul>
             </section>
             <section id="toolkit">
-              <div className="section-kicker">05 / Your developer toolkit</div>
+              <div className="section-kicker">06 / Your developer toolkit</div>
               <h2>Tools have different jobs.</h2>
               <p>You do not need to master everything at once. Start with the editor, Preview, AI help, and a safe way to save your work. Add the other tools as a project needs them.</p>
               <div className="toolkit-grid">
@@ -260,7 +364,7 @@ Give me one safe change to try and tell me how to check it.`}</CodeBlock>
               </div>
             </section>
             <section id="debugging">
-              <div className="section-kicker">06 / When something breaks</div>
+              <div className="section-kicker">07 / When something breaks</div>
               <h2>Debug one clue at a time.</h2>
               <p>Debugging means finding the cause of a problem instead of guessing at fixes. Try this calm, repeatable order:</p>
               <ol>
@@ -273,7 +377,7 @@ Give me one safe change to try and tell me how to check it.`}</CodeBlock>
               <div className="notice"><strong>A good debugging habit:</strong> Save a Git checkpoint before a large change. That gives you a known-good version to return to.</div>
             </section>
             <section id="git">
-              <div className="section-kicker">07 / Keeping a history</div>
+              <div className="section-kicker">08 / Keeping a history</div>
               <h2>Git gives you a rewind button.</h2>
               <p>Git is the change-history tool; GitHub is a place to keep a copy of a Git project online. You can start with the Replit version-control tools instead of typing commands. If the project is connected to a GitHub repository, the same basic cycle can be done in a terminal:</p>
               <CodeBlock label="A simple Git workflow">{`git status
@@ -289,7 +393,7 @@ git push`}</CodeBlock>
               <p>A GitHub copy can help if an account or project becomes unavailable, but only if you connected it and pushed your changes. Before pushing, review the changes and keep credentials and private information out of the repository.</p>
             </section>
             <section id="supabase">
-              <div className="section-kicker">08 / A possible next layer</div>
+              <div className="section-kicker">09 / A possible next layer</div>
               <h2>What would Supabase add?</h2>
               <p>Supabase is a hosted platform that can provide a Postgres database, authentication, file storage, and APIs. A database becomes useful when the site needs to remember information—for example, storing real quote requests or letting the owner update services without editing code.</p>
               <h3>A simple data shape</h3>

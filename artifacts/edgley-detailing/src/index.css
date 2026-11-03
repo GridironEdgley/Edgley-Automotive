@@ -634,6 +634,16 @@ body {
 .toolkit-card { min-width: 0; padding: 18px; background: #e8e5dc; border-right: 1px solid #d2cfc5; border-bottom: 1px solid #d2cfc5; }
 .toolkit-card h3 { margin: 10px 0 7px; }
 .toolkit-card p { font-size: 12px; line-height: 1.75; }
+.reverse-lab { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 24px; }
+.reverse-controls { background: #e8e5dc; border: 1px solid #d2cfc5; padding: 22px; }
+.reverse-range { width: 100%; accent-color: #927d12; }
+.reverse-preview { min-width: 0; min-height: 250px; display: flex; flex-direction: column; justify-content: center; gap: 12px; background: #171717; color: #f3f1e9; border: 1px solid #393832; border-top: 5px solid #f5d21b; transition: padding .15s ease, border-color .15s ease; }
+.reverse-preview h3 { color: #f3f1e9; font: 600 25px/1.15 'Space Grotesk', sans-serif; margin: 0; overflow-wrap: anywhere; }
+.reverse-preview p { color: #c9c7bf; font-size: 12px; margin: 0; }
+.reverse-toggle { margin-top: 20px; border: 1px solid #171717; background: #f5d21b; color: #171717; padding: 11px 14px; font: 600 12px 'DM Mono', monospace; cursor: pointer; }
+.reverse-toggle:hover { background: #e7c41b; }
+.reverse-toggle:focus-visible { outline: 3px solid #927d12; outline-offset: 3px; }
+.reverse-explanation { margin-bottom: 22px; }
 .learn-end { background: #171717; color: #f3f1e9; padding: 54px clamp(22px, 8vw, 130px); display: flex; justify-content: space-between; align-items: center; gap: 24px; }
 .learn-end p { color: #bbb8af; font-size: 13px; }
 .fade-in { animation: settle .7s both; }
@@ -667,6 +677,7 @@ body {
   .learn-toc a { flex: 0 0 auto; white-space: nowrap; }
   .practice-grid { grid-template-columns: 1fr; }
   .toolkit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .reverse-lab { grid-template-columns: 1fr; }
   .learn-end { align-items: flex-start; flex-direction: column; }
 }
 @media (max-width: 480px) {
