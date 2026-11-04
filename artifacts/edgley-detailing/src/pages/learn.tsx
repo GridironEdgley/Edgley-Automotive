@@ -176,6 +176,7 @@ export default function LearnPage() {
         <div className="learn-layout">
           <nav className="learn-toc" aria-label="Learning guide contents">
             <a href="#react" data-testid="link-learn-react">React + TypeScript</a>
+            <a href="#frontend-backend" data-testid="link-learn-frontend-backend">Front end + back end</a>
             <a href="#practice" data-testid="link-learn-practice">Try a small edit</a>
             <a href="#files" data-testid="link-learn-files">Finding the code</a>
             <a href="#reverse-engineering" data-testid="link-learn-reverse">Reverse engineering</a>
@@ -216,14 +217,49 @@ export default function LearnPage() {
 </Switch>`}</CodeBlock>
               <p>A shared navigation sits around the route switch, which is why the learning guide is reachable from both pages.</p>
             </section>
+            <section id="frontend-backend">
+              <div className="section-kicker">02 / How the pieces work together</div>
+              <h2>Front end and back end have different jobs.</h2>
+              <p>The <strong>front end</strong> is the part that runs in a visitor’s browser: the words, images, buttons, layout, and interactions. The <strong>back end</strong> runs on a server and handles work the browser should not do by itself, such as checking a request, protecting private information, and saving or retrieving data.</p>
+              <div className="concept-strip">
+                <div><strong>Front end</strong><span>Shows the page and responds to clicks.</span></div>
+                <div><strong>Back end</strong><span>Applies rules and handles protected work.</span></div>
+                <div><strong>Database</strong><span>Keeps information for later.</span></div>
+                <div><strong>API</strong><span>Carries requests and replies between them.</span></div>
+              </div>
+              <h3>How they might work together</h3>
+              <p>Imagine a future “Request a quote” form. The browser collects the visitor’s details, the front end sends them to a back-end API, the back end checks the information and saves it, then sends a reply for the page to show.</p>
+              <CodeBlock label="A simplified example—not connected to this website">{`Visitor fills out a form
+        ↓
+Front end sends a request to the API
+        ↓
+Back end checks the request and saves it
+        ↓
+Database keeps the information
+        ↓
+Back end replies; front end shows a message`}</CodeBlock>
+              <p>A real app should not trust the browser alone. Someone can inspect or change browser code, so the back end must check important rules itself. Passwords and private service keys belong on the server, never in front-end code that visitors can download.</p>
+              <h3>What this means for the Edgley site</h3>
+              <p>This Edgley website is currently a front-end site: its pages display information, but they do not send quote requests to a back end or save them in a database. You can change the page and preview it without setting up a server. If you later add saved bookings, customer accounts, or quote requests, you would need a back end or a carefully configured service such as Supabase.</p>
+              <div className="notice">
+                <strong>Know the difference:</strong> A button that looks like a form action is not proof that information was delivered. A working submit flow needs a real destination, a successful server response, clear confirmation for the visitor, and safe handling of the saved data.
+              </div>
+              <h3>A beginner’s way to explore</h3>
+              <ol>
+                <li>Change a heading or color and check the Preview. That is front-end work.</li>
+                <li>Look at the browser’s Network tab while a page loads. It shows files and requests the browser receives.</li>
+                <li>When a site sends data, inspect the request and response without sharing passwords or private customer details.</li>
+                <li>Ask: “Where is this information checked? Where is it saved? What does the visitor see if it fails?” Those questions help you spot which back-end pieces a feature needs.</li>
+              </ol>
+            </section>
             <section id="practice">
-              <div className="section-kicker">02 / Learn by trying</div>
+              <div className="section-kicker">03 / Learn by trying</div>
               <h2>Make a change and watch what happens.</h2>
               <p>Learning sticks when you can experiment. These controls are safe to try: they change only this preview, and no customer information is sent or stored.</p>
               <HeadlinePractice />
             </section>
             <section id="files">
-              <div className="section-kicker">03 / Finding your way</div>
+              <div className="section-kicker">04 / Finding your way</div>
               <h2>Know which file does what.</h2>
               <p>Open the project folder in a code editor such as VS Code. The useful starting points are:</p>
               <ul>
@@ -253,7 +289,7 @@ export default function LearnPage() {
               </div>
             </section>
             <section id="reverse-engineering">
-              <div className="section-kicker">04 / Learn by reverse engineering</div>
+              <div className="section-kicker">05 / Learn by reverse engineering</div>
               <h2>Work backward from what you can see.</h2>
               <p>Reverse engineering means starting with an object or program you can observe, then tracing clues to understand how it works. For web development, that can mean noticing what a button does, finding the matching component, and testing which style controls its appearance.</p>
               <p>Use this skill on your own projects, or on code and products you have permission to study. Don’t use it to break into accounts, get around payments or access controls, or take private information from someone else’s system.</p>
@@ -311,7 +347,7 @@ change anything. Suggest one small test I can try.`}</CodeBlock>
               </div>
             </section>
             <section id="ai">
-              <div className="section-kicker">05 / Working with AI</div>
+              <div className="section-kicker">06 / Working with AI</div>
               <h2>Use Grok and other AI helpers as tutors.</h2>
               <p>An AI assistant is a tool you can talk to in everyday language. It can explain code, suggest an example, or help investigate an error. It does not understand your project perfectly and can confidently suggest something incorrect, so treat its answer as a draft—not a command.</p>
               <p>Grok, made by xAI, is one AI assistant. You can ask it to explain a small code example or make you a practice question, just as you can with other AI helpers. Replit Agent can work with files in this project when you ask it to; a separate chatbot usually only sees what you share with it. Don’t assume any chatbot can see your workspace.</p>
@@ -337,7 +373,7 @@ Then give me one safe exercise and a way to undo it.`}</CodeBlock>
               </ul>
             </section>
             <section id="toolkit">
-              <div className="section-kicker">06 / Your developer toolkit</div>
+              <div className="section-kicker">07 / Your developer toolkit</div>
               <h2>Tools have different jobs.</h2>
               <p>You do not need to master everything at once. Start with the editor, Preview, AI help, and a safe way to save your work. Add the other tools as a project needs them.</p>
               <div className="toolkit-grid">
@@ -404,7 +440,7 @@ Then give me one safe exercise and a way to undo it.`}</CodeBlock>
               </div>
             </section>
             <section id="apis-tools">
-              <div className="section-kicker">07 / Connecting and sharing software</div>
+              <div className="section-kicker">08 / Connecting and sharing software</div>
               <h2>APIs, MCP, Postman, and Vercel.</h2>
               <p>These names describe different jobs. An API lets programs exchange information. MCP lets an AI app connect to tools. Postman helps you test an API. Vercel can host a website and publish updates.</p>
               <h3>An API is a conversation between programs</h3>
@@ -446,20 +482,41 @@ Then give me one safe exercise and a way to undo it.`}</CodeBlock>
               </p>
             </section>
             <section id="debugging">
-              <div className="section-kicker">08 / When something breaks</div>
-              <h2>Debug one clue at a time.</h2>
-              <p>Debugging means finding the cause of a problem instead of guessing at fixes. Try this calm, repeatable order:</p>
+              <div className="section-kicker">09 / When something breaks</div>
+              <h2>Find the error, then fix one clue at a time.</h2>
+              <p>Debugging means finding the cause of a problem instead of guessing at fixes. First notice where the error appears; different tools report different kinds of problems.</p>
+              <h3>Where to look for errors</h3>
               <ol>
-                <li>Remember the last thing you changed. Can you make the problem happen again?</li>
-                <li>Check the Preview. Did the page disappear, or is one thing simply styled incorrectly?</li>
-                <li>Look at the first useful error in the browser Console or the type-check result.</li>
-                <li>Ask AI to explain that error and suggest one small fix—do not ask it to rewrite everything.</li>
-                <li>Change one thing, save, and check the Preview again. If it gets worse, undo that change.</li>
+                <li><strong>Browser Console:</strong> In the Preview, open the browser’s Developer Tools (often <kbd>F12</kbd> or right-click and choose <strong>Inspect</strong>), then select <strong>Console</strong>. Red messages often indicate JavaScript errors. Yellow messages are usually warnings; read them, but they may not be the cause of the problem.</li>
+                <li><strong>Replit workflow logs:</strong> If the app will not start or the Preview is blank, open the running web workflow’s logs. The server or build error may appear there even when the browser Console is empty.</li>
+                <li><strong>Type check:</strong> Run this in the project Shell to find many TypeScript mistakes and see the file and line involved:</li>
               </ol>
-              <div className="notice"><strong>A good debugging habit:</strong> Save a Git checkpoint before a large change. That gives you a known-good version to return to.</div>
+              <CodeBlock label="Run from the workspace root">{`pnpm --filter @workspace/edgley-detailing run typecheck`}</CodeBlock>
+              <p>Read the first relevant error and note its file name and line number. Fixing that one can make later messages disappear. If the error began after an edit, try to reproduce it and remember exactly what changed.</p>
+              <h3>Ask AI to help without handing it the whole project</h3>
+              <p>Share the exact error text and only the small nearby piece of code needed to understand it. Ask for an explanation before asking for a fix. A good assistant should tell you what it thinks is wrong, why, and how to check its suggestion.</p>
+              <CodeBlock label="A careful troubleshooting prompt">{`I'm learning. Please explain this error in simple words.
+
+Error:
+[paste the exact error message]
+
+Relevant code:
+[paste only the small code section around the file and line]
+
+Tell me the likely cause, one small fix, and how to
+verify it. Don't rewrite unrelated files. If you're unsure,
+say what information is missing.`}</CodeBlock>
+              <h3>Review and verify the proposed fix</h3>
+              <ol>
+                <li>Ask the AI to explain every change before applying it. If you use an AI coding tool, ask it to change only the relevant code and show you what it changed.</li>
+                <li>Read the changed files or diff. Don’t accept a fix you can’t explain yet; ask questions or undo it.</li>
+                <li>Run the type check again, then repeat the action that caused the problem and check the Preview.</li>
+                <li>If the problem remains, give the AI the new error and what you already tried. Don’t pile on several guesses at once.</li>
+              </ol>
+              <div className="notice"><strong>Keep private information private:</strong> Before sharing an error or code with any AI service, remove passwords, API keys, access tokens, private customer details, and other secrets. Save a Git checkpoint before a larger change so you can return to a known-good version.</div>
             </section>
             <section id="git">
-              <div className="section-kicker">09 / Keeping a history</div>
+              <div className="section-kicker">10 / Keeping a history</div>
               <h2>Put this website on GitHub.</h2>
               <p><strong>Git</strong> keeps a history of code changes. A <strong>commit</strong> is a named snapshot in that history. <strong>GitHub</strong> stores a copy online, and <strong>push</strong> sends your committed snapshots there. Making a commit and pushing it are two separate steps.</p>
               <div className="notice">
@@ -500,7 +557,7 @@ git remote`}</CodeBlock>
               <p>If the command says <code>remote github already exists</code>, don’t add it again. If it asks you to sign in, use Replit’s GitHub authorization flow; never paste a password or access token into chat or save one in your code. For Replit’s visual Git tools, see the official <a href="https://docs.replit.com/features/workspace-tools/git-interface" target="_blank" rel="noreferrer">Git pane guide</a>.</p>
             </section>
             <section id="supabase">
-              <div className="section-kicker">10 / A possible next layer</div>
+              <div className="section-kicker">11 / A possible next layer</div>
               <h2>What would Supabase add?</h2>
               <p>Supabase is a hosted platform that can provide a Postgres database, authentication, file storage, and APIs. A database becomes useful when the site needs to remember information—for example, storing real quote requests or letting the owner update services without editing code.</p>
               <h3>A simple data shape</h3>
