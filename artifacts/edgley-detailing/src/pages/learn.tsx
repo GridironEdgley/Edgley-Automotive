@@ -1,5 +1,18 @@
 import { useState } from 'react';
 import { Link } from 'wouter';
+import {
+  AccessControlLab,
+  ApiRequestLab,
+  DebuggingChooserLab,
+  FileTraceLab,
+  FrontendBackendLab,
+  GitFlowLab,
+  McpPermissionsLab,
+  PromptBuilderLab,
+  SqlPlaygroundLab,
+  ToolPickerLab,
+  VercelSettingsLab,
+} from '@/components/learning-labs';
 
 function CodeBlock({ label, children }: { label: string; children: string }) {
   return <pre className="code-block"><span className="code-label">{label}</span><code>{children}</code></pre>;
@@ -189,6 +202,9 @@ export default function LearnPage() {
             <a href="#sql-vercel" data-testid="link-learn-sql-vercel">SQL + Vercel troubleshooting</a>
           </nav>
           <article className="learn-content">
+            <div className="notice lab-intro">
+              <strong>Learn by trying:</strong> The interactive examples throughout this guide use temporary sample data in your browser. They do not run code you type, connect to real accounts, change the real site, or save information; they reset when you reload.
+            </div>
             <section id="react">
               <div className="section-kicker">01 / The ingredients</div>
               <h2>React builds the pieces.</h2>
@@ -245,6 +261,7 @@ Back end replies; front end shows a message`}</CodeBlock>
               <div className="notice">
                 <strong>Know the difference:</strong> A button that looks like a form action is not proof that information was delivered. A working submit flow needs a real destination, a successful server response, clear confirmation for the visitor, and safe handling of the saved data.
               </div>
+              <FrontendBackendLab />
               <h3>A beginner’s way to explore</h3>
               <ol>
                 <li>Change a heading or color and check the Preview. That is front-end work.</li>
@@ -288,6 +305,7 @@ Back end replies; front end shows a message`}</CodeBlock>
                 <div><strong>TypeScript</strong><span>What values the code expects</span></div>
                 <div><strong>React</strong><span>How pieces update and fit together</span></div>
               </div>
+              <FileTraceLab />
             </section>
             <section id="reverse-engineering">
               <div className="section-kicker">05 / Learn by reverse engineering</div>
@@ -364,6 +382,7 @@ Then give me one safe exercise and a way to undo it.`}</CodeBlock>
                 <div><strong>Ask how to check</strong><span>“How can I tell if it worked?”</span></div>
                 <div><strong>Ask before a big edit</strong><span>“Explain your plan first. Don't edit yet.”</span></div>
               </div>
+              <PromptBuilderLab />
               <h3>Keep yourself and your project safe</h3>
               <ul>
                 <li>Never paste passwords, private keys, secret codes, or real customer information into an AI chat or source file.</li>
@@ -439,6 +458,7 @@ Then give me one safe exercise and a way to undo it.`}</CodeBlock>
                   <p>Publishing puts a finished version of the website on a public internet address. Check the page and its links before making it live.</p>
                 </article>
               </div>
+              <ToolPickerLab />
             </section>
             <section id="apis-tools">
               <div className="section-kicker">08 / Connecting and sharing software</div>
@@ -464,9 +484,11 @@ Then give me one safe exercise and a way to undo it.`}</CodeBlock>
                 <li>Change <code>first-api</code> to another harmless word, send again, and predict what value will come back.</li>
               </ol>
               <p>This is a read-only practice request. Don’t put passwords, API keys, or personal information in a URL or test request. Postman collections can save requests; review them before sharing so private values aren’t included.</p>
+              <ApiRequestLab />
               <h3>MCP connects an AI assistant to tools</h3>
               <p><strong>MCP</strong> means Model Context Protocol. It is a shared way for AI apps to discover and use tools or read information from other programs. An MCP server is a program that offers those capabilities. For example, REA from the earlier section uses MCP to offer inspection tools to a compatible AI assistant.</p>
               <p>MCP is not the same thing as an API, though an MCP tool may use an API behind the scenes. Some MCP tools only read information; others can edit files, send messages, or change data. Before connecting one, check who made it, what it can access, and whether you can review actions before they happen.</p>
+              <McpPermissionsLab />
               <h3>Vercel hosts and publishes websites</h3>
               <p>Vercel is a website hosting platform. When a project is connected to a Git provider, Vercel can build preview versions from code changes and publish the production version from a chosen branch. A preview is for checking; production is the version visitors see.</p>
               <div className="concept-strip">
@@ -515,6 +537,7 @@ say what information is missing.`}</CodeBlock>
                 <li>If the problem remains, give the AI the new error and what you already tried. Don’t pile on several guesses at once.</li>
               </ol>
               <div className="notice"><strong>Keep private information private:</strong> Before sharing an error or code with any AI service, remove passwords, API keys, access tokens, private customer details, and other secrets. Save a Git checkpoint before a larger change so you can return to a known-good version.</div>
+              <DebuggingChooserLab />
             </section>
             <section id="git">
               <div className="section-kicker">10 / Keeping a history</div>
@@ -555,6 +578,7 @@ git remote`}</CodeBlock>
               <div className="notice">
                 <strong>Protect your work:</strong> A private repository is a good starting choice. Review the files before committing, and never add passwords, API keys, access tokens, or private connection details. If Replit asks to remove or replace the existing remote, cancel and get help instead. If Git reports a rejected push or a conflict, do not use “force push”—stop and ask what the message means.
               </div>
+              <GitFlowLab />
               <p>If the command says <code>remote github already exists</code>, don’t add it again. If it asks you to sign in, use Replit’s GitHub authorization flow; never paste a password or access token into chat or save one in your code. For Replit’s visual Git tools, see the official <a href="https://docs.replit.com/features/workspace-tools/git-interface" target="_blank" rel="noreferrer">Git pane guide</a>.</p>
             </section>
             <section id="supabase">
@@ -569,6 +593,7 @@ git remote`}</CodeBlock>
   vehicle       vehicle details
   created_at    when the request arrived`}</CodeBlock>
               <p>Then plan who can add, read, and change each row. Supabase uses Row Level Security (RLS) policies for database access. A public website should not be able to read every customer's private request.</p>
+              <AccessControlLab />
               <div className="notice" data-testid="status-no-backend">
                 <strong>Important: Supabase is not connected.</strong> This site currently has no database or backend. The current pages are static frontend content. There is no quote or contact submission that is delivered or saved remotely.
               </div>
@@ -600,6 +625,7 @@ UPDATE tasks
 SET status = 'done'
 WHERE id = 1;`}</CodeBlock>
               <p><code>WHERE</code> narrows an action to matching rows. Without it, an <code>UPDATE</code> could change every row, and a <code>DELETE</code> could remove every row. Start by learning <code>SELECT</code>; only practice changes in a throwaway database, never on important or live data.</p>
+              <SqlPlaygroundLab />
               <p>In a real app, the front end should not get broad database access. A secure back end checks who is making a request and what they are allowed to do. Use parameterized queries rather than joining user-entered text into SQL, which helps prevent SQL injection. Never paste private database passwords or service keys into browser code or AI chats.</p>
               <h3>Vercel helps you find deployment problems</h3>
               <p>Vercel can build and host a website. Its build logs show problems that stop a new version from building; runtime logs show errors from server-side functions. Vercel does not automatically repair your source code—you use the error clues to make and test a code change.</p>
@@ -619,6 +645,7 @@ WHERE id = 1;`}</CodeBlock>
               </ol>
               <CodeBlock label="Vercel Build Command">{`PORT=23599 BASE_PATH=/ pnpm --filter @workspace/edgley-detailing run build`}</CodeBlock>
               <p>Then set <strong>Output Directory</strong> to <code>artifacts/edgley-detailing/dist/public</code>. In short: Root Directory tells Vercel where to start; Build Command tells it what to run; Output Directory tells it which finished files to publish. These settings are instructions for a future Vercel setup—this site is still hosted in Replit.</p>
+              <VercelSettingsLab />
               <ol>
                 <li>In Vercel, open the project and choose <strong>Deployments</strong>. Select the deployment that failed, then open its <strong>Build Logs</strong>.</li>
                 <li>Look for the first clear error, plus the file name, line number, or failed command. A later error may only be a result of the first one.</li>
