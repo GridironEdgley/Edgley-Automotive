@@ -186,6 +186,7 @@ export default function LearnPage() {
             <a href="#debugging" data-testid="link-learn-debugging">Fixing problems</a>
             <a href="#git" data-testid="link-learn-git">Git + GitHub</a>
             <a href="#supabase" data-testid="link-learn-supabase">What Supabase adds</a>
+            <a href="#sql-vercel" data-testid="link-learn-sql-vercel">SQL + Vercel troubleshooting</a>
           </nav>
           <article className="learn-content">
             <section id="react">
@@ -572,6 +573,57 @@ git remote`}</CodeBlock>
                 <strong>Important: Supabase is not connected.</strong> This site currently has no database or backend. The current pages are static frontend content. There is no quote or contact submission that is delivered or saved remotely.
               </div>
               <p>Connecting a database is not just adding a URL. It requires a specific feature, a data model, secure access policies, and a clear plan for who can read or change information. Never put a private service-role key in browser code. The current site can stay simple until you want a feature that needs saved data.</p>
+            </section>
+            <section id="sql-vercel">
+              <div className="section-kicker">12 / Working with data and deployments</div>
+              <h2>SQL reads and changes database information.</h2>
+              <p><strong>SQL</strong> (usually said “sequel”) is a language for asking a database to find, add, change, or remove information. Think of a table like a spreadsheet: columns describe what each value means, and each row is one saved record.</p>
+              <CodeBlock label="Example only: a pretend tasks table">{`tasks
+  id | title      | status
+   1 | Learn SQL  | open
+   2 | Test a page| done`}</CodeBlock>
+              <p>These examples use a pretend <code>tasks</code> table. They do not run on this website or change any real data.</p>
+              <h3>Four SQL actions to recognize</h3>
+              <div className="concept-strip">
+                <div><strong>SELECT</strong><span>Find and read matching rows.</span></div>
+                <div><strong>INSERT</strong><span>Add a new row.</span></div>
+                <div><strong>UPDATE</strong><span>Change existing rows.</span></div>
+                <div><strong>DELETE</strong><span>Remove rows.</span></div>
+              </div>
+              <CodeBlock label="Practice examples only—not connected">{`-- Read open tasks
+SELECT title, status
+FROM tasks
+WHERE status = 'open';
+
+-- Change one task (id 1)
+UPDATE tasks
+SET status = 'done'
+WHERE id = 1;`}</CodeBlock>
+              <p><code>WHERE</code> narrows an action to matching rows. Without it, an <code>UPDATE</code> could change every row, and a <code>DELETE</code> could remove every row. Start by learning <code>SELECT</code>; only practice changes in a throwaway database, never on important or live data.</p>
+              <p>In a real app, the front end should not get broad database access. A secure back end checks who is making a request and what they are allowed to do. Use parameterized queries rather than joining user-entered text into SQL, which helps prevent SQL injection. Never paste private database passwords or service keys into browser code or AI chats.</p>
+              <h3>Vercel helps you find deployment problems</h3>
+              <p>Vercel can build and host a website. Its build logs show problems that stop a new version from building; runtime logs show errors from server-side functions. Vercel does not automatically repair your source code—you use the error clues to make and test a code change.</p>
+              <ol>
+                <li>In Vercel, open the project and choose <strong>Deployments</strong>. Select the deployment that failed, then open its <strong>Build Logs</strong>.</li>
+                <li>Look for the first clear error, plus the file name, line number, or failed command. A later error may only be a result of the first one.</li>
+                <li>For this Vite app, you can also run its build check from the workspace Shell:</li>
+              </ol>
+              <CodeBlock label="Run from the workspace root">{`pnpm --filter @workspace/edgley-detailing run build`}</CodeBlock>
+              <ol start={4}>
+                <li>Fix the source file—not generated build output. Review the change, run the build again, and check the site.</li>
+                <li>If Vercel is connected to GitHub, push the fix to a branch and inspect its Preview Deployment before merging or sending it to the live site.</li>
+              </ol>
+              <p>Build logs and browser errors are different clues. If the deployment succeeds but a button or page fails in a visitor’s browser, open that page’s Developer Tools and check the <strong>Console</strong>. Server-side function problems appear in Vercel’s runtime logs; a static page’s browser error may not appear there.</p>
+              <CodeBlock label="Ask AI to explain a Vercel build error">{`Explain this build error in beginner-friendly language.
+Point out the first error, the file or command involved,
+and one small source-code fix to try. Don't change
+unrelated files. Then tell me how to test the fix locally.`}</CodeBlock>
+              <div className="notice">
+                <strong>For this Edgley site:</strong> It is currently previewed in Replit and is not connected to Vercel or a database. You will not see this site’s real deployment logs in Vercel until you set up a Vercel project. Before sharing a log with AI, remove passwords, access tokens, private URLs, and customer information.
+              </div>
+              <p className="tool-links">
+                Official references: <a href="https://vercel.com/docs/deployments/troubleshoot-a-build" target="_blank" rel="noreferrer">Vercel build troubleshooting</a>, <a href="https://vercel.com/docs/observability/runtime-logs" target="_blank" rel="noreferrer">Vercel runtime logs</a>, and <a href="https://supabase.com/docs/guides/database/overview" target="_blank" rel="noreferrer">Supabase database basics</a>.
+              </p>
             </section>
           </article>
         </div>
