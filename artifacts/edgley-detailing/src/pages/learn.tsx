@@ -177,6 +177,90 @@ function ReverseEngineerLab() {
   );
 }
 
+const glossaryTerms = [
+  { term: 'Code', group: 'Basic building blocks', meaning: 'Instructions that tell a computer what to do.', example: 'Like a recipe: the computer follows the steps.' },
+  { term: 'Programming language', group: 'Basic building blocks', meaning: 'A structured way to write instructions a computer can run.', example: 'Like choosing a language to give instructions clearly.' },
+  { term: 'IDE / code editor', group: 'Basic building blocks', meaning: 'A place to read and write code. An IDE adds extra helpers such as error hints and run buttons.', example: 'Like a notebook that can also check your spelling and organize your tools.' },
+  { term: 'UI (user interface)', group: 'What you see', meaning: 'The parts of an app you can see and use: text, buttons, menus, and forms.', example: 'Like the dashboard and controls in a car.' },
+  { term: 'UX (user experience)', group: 'What you see', meaning: 'How easy, clear, and pleasant an app feels while you use it.', example: 'A button is UI; how easy it is to find and use is UX.' },
+  { term: 'Front end', group: 'How a website works', meaning: 'The part of a website that runs in your browser and shows the page.', example: 'Like the shop floor that customers walk through.' },
+  { term: 'Back end', group: 'How a website works', meaning: 'The behind-the-scenes code that handles requests, rules, and saved information.', example: 'Like the kitchen and storeroom behind a restaurant.' },
+  { term: 'HTML and JSX', group: 'How a website works', meaning: 'HTML describes page structure. JSX is a React-friendly way to write that structure inside code.', example: 'Like arranging headings, paragraphs, and buttons in a page.' },
+  { term: 'CSS', group: 'How a website works', meaning: 'Rules that control how a page looks, including colors, spacing, and layout.', example: 'Like paint, furniture, and signs in a room.' },
+  { term: 'JavaScript', group: 'How a website works', meaning: 'A programming language that can make a page respond to clicks and changing information.', example: 'Like the switches that make the lights and doors work.' },
+  { term: 'TypeScript', group: 'How a website works', meaning: 'JavaScript with extra labels that help catch some mistakes before the app runs.', example: 'Like putting labels on boxes so the right things go in them.' },
+  { term: 'Component', group: 'Code pieces', meaning: 'A reusable piece of a page, such as a button, menu, or service card.', example: 'Like a building block you can use in more than one place.' },
+  { term: 'Function', group: 'Code pieces', meaning: 'A named set of instructions that does a particular job.', example: 'Like a small machine: give it an input and it follows its steps.' },
+  { term: 'Variable', group: 'Code pieces', meaning: 'A named place in code for holding a value, such as a name or number.', example: 'Like a labeled box whose contents can change.' },
+  { term: 'State', group: 'Code pieces', meaning: 'Information a page is currently keeping track of, like the text typed into a form.', example: 'Like a whiteboard that remembers the current score while the game is open.' },
+  { term: 'Props', group: 'Code pieces', meaning: 'Information passed into a component so it knows what to show.', example: 'Like handing a building block its color and label.' },
+  { term: 'Event', group: 'Code pieces', meaning: 'Something that happens, such as a click, key press, or form submission.', example: 'Like ringing a doorbell; the app can respond to it.' },
+  { term: 'Route', group: 'Code pieces', meaning: 'A rule that connects a web address, such as /learn, to a page.', example: 'Like a sign that points to the right room.' },
+  { term: 'Bug, error, and debugging', group: 'Fixing and sharing', meaning: 'A bug is a problem in code. An error is a message about a problem. Debugging means finding and fixing the cause.', example: 'Like noticing a toy does not work, then checking its pieces one by one.' },
+  { term: 'Package', group: 'Tools and services', meaning: 'Reusable code made by other developers that you can add to a project.', example: 'Like buying a ready-made part instead of building every part yourself.' },
+  { term: 'Library and framework', group: 'Tools and services', meaning: 'A library is ready-made code you can call when you need it. A framework provides a broader structure for how an app is built.', example: 'A library is like borrowing a tool; a framework is like using a prepared building plan.' },
+  { term: 'Runtime', group: 'Tools and services', meaning: 'The environment that runs your code, such as a browser running the website’s JavaScript.', example: 'Like the stage where a play can actually happen.' },
+  { term: 'SDK (software development kit)', group: 'Tools and services', meaning: 'A set of tools and instructions that helps developers build with a particular platform or service.', example: 'Like a toolbox with the right tools and a manual for one repair job.' },
+  { term: 'API (application programming interface)', group: 'Tools and services', meaning: 'A set of rules that lets one program ask another program for information or an action.', example: 'Like a menu: it shows what you can ask for and how to ask.' },
+  { term: 'Endpoint and request', group: 'Tools and services', meaning: 'An endpoint is a specific API address. A request is the message a program sends to that address.', example: 'Like choosing a department and asking it a question.' },
+  { term: 'HTTP status code', group: 'Tools and services', meaning: 'A number in a web reply that gives a quick clue about the result. For example, 200 usually means success and 404 means not found.', example: 'Like a short delivery update: delivered, or address not found.' },
+  { term: 'JSON', group: 'Tools and services', meaning: 'A common text format for packaging labeled information so programs can exchange it.', example: 'Like a form with clear labels such as name and price.' },
+  { term: 'Database and SQL', group: 'Tools and services', meaning: 'A database stores organized information. SQL is a language used to ask for or change information in many databases.', example: 'Like a filing cabinet and the instructions for finding a folder.' },
+  { term: 'Client and server', group: 'Tools and services', meaning: 'The client (often your browser) asks for something; a server is a computer that receives the request and sends a reply.', example: 'Like a customer placing an order and a shop worker bringing it back.' },
+  { term: 'Authentication and authorization', group: 'Tools and services', meaning: 'Authentication checks who you are. Authorization checks what you are allowed to do.', example: 'Authentication checks your ticket; authorization checks which rooms your ticket allows you to enter.' },
+  { term: 'Environment variable', group: 'Tools and services', meaning: 'A setting supplied to an app from outside its code, often used for configuration. Private keys must be kept secret.', example: 'Like a setting on a control panel, rather than a rule written into the machine.' },
+  { term: 'Git', group: 'Fixing and sharing', meaning: 'A tool that records snapshots of code changes so you can review or revisit them.', example: 'Like a save history for your project.' },
+  { term: 'Repository (repo)', group: 'Fixing and sharing', meaning: 'A project folder tracked by Git, including its files and change history.', example: 'Like a project binder with the current pages and a record of edits.' },
+  { term: 'Branch', group: 'Fixing and sharing', meaning: 'A separate line of work where you can try changes without changing the main version right away.', example: 'Like making a copy of a drawing to experiment on.' },
+  { term: 'Commit', group: 'Fixing and sharing', meaning: 'A saved Git snapshot with a short note explaining what changed.', example: 'Like saving a named checkpoint in a game.' },
+  { term: 'GitHub', group: 'Fixing and sharing', meaning: 'A website for storing Git repositories online and collaborating on code.', example: 'Like keeping your project binder online so you can reach it from another computer.' },
+  { term: 'Root directory', group: 'Fixing and sharing', meaning: 'The top-level folder of a project; folders and files are organized inside it.', example: 'Like the front door of a building, before you choose a room.' },
+  { term: 'Deploy and hosting', group: 'Fixing and sharing', meaning: 'Hosting keeps a website available online. Deploying puts a built version of your code there.', example: 'Like opening your finished shop for visitors.' },
+];
+
+function GlossarySection() {
+  const [search, setSearch] = useState('');
+  const normalizedSearch = search.trim().toLowerCase();
+  const visibleTerms = glossaryTerms.filter(({ term, group, meaning, example }) =>
+    `${term} ${group} ${meaning} ${example}`.toLowerCase().includes(normalizedSearch),
+  );
+
+  return (
+    <section id="coding-words">
+      <div className="section-kicker">00 / Your coding dictionary</div>
+      <h2>Big coding words, in simple language.</h2>
+      <p>Use this as a friendly dictionary while you read the rest of the guide. You do not need to memorize everything. Search for a word when you meet it, then connect it to the example.</p>
+      <label className="practice-input-label" htmlFor="glossary-search">Look up a word</label>
+      <input
+        id="glossary-search"
+        className="practice-input glossary-search"
+        type="search"
+        placeholder="Try “SDK”, “state”, or “Git”"
+        value={search}
+        onChange={(event) => setSearch(event.target.value)}
+        aria-describedby="glossary-result-count"
+      />
+      <p id="glossary-result-count" className="glossary-count" aria-live="polite">
+        Showing {visibleTerms.length} of {glossaryTerms.length} terms.
+      </p>
+      {visibleTerms.length > 0 ? (
+        <div className="glossary-grid">
+          {visibleTerms.map(({ term, group, meaning, example }) => (
+            <article className="glossary-card" key={term}>
+              <div className="practice-label">{group}</div>
+              <h3>{term}</h3>
+              <p>{meaning}</p>
+              <p className="glossary-example"><strong>Think of it like:</strong> {example}</p>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <div className="notice" role="status">No matching word yet. Try a shorter search, or clear the search box.</div>
+      )}
+    </section>
+  );
+}
+
 export default function LearnPage() {
   return (
     <>
@@ -188,6 +272,7 @@ export default function LearnPage() {
         </section>
         <div className="learn-layout">
           <nav className="learn-toc" aria-label="Learning guide contents">
+            <a href="#coding-words" data-testid="link-learn-coding-words">Coding word dictionary</a>
             <a href="#react" data-testid="link-learn-react">React + TypeScript</a>
             <a href="#frontend-backend" data-testid="link-learn-frontend-backend">Front end + back end</a>
             <a href="#practice" data-testid="link-learn-practice">Try a small edit</a>
@@ -205,6 +290,7 @@ export default function LearnPage() {
             <div className="notice lab-intro">
               <strong>Learn by trying:</strong> The interactive examples throughout this guide use temporary sample data in your browser. They do not run code you type, connect to real accounts, change the real site, or save information; they reset when you reload.
             </div>
+            <GlossarySection />
             <section id="react">
               <div className="section-kicker">01 / The ingredients</div>
               <h2>React builds the pieces.</h2>

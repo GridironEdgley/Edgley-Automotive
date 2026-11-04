@@ -630,6 +630,14 @@ body {
 .concept-strip div { display: grid; gap: 5px; padding: 14px; border-right: 1px solid #d2cfc5; border-bottom: 1px solid #d2cfc5; }
 .concept-strip strong { color: #171717; font-size: 12px; }
 .concept-strip span { color: #5d5b54; font-size: 11px; }
+.glossary-search { max-width: 440px; }
+.glossary-count { margin: 8px 0 16px !important; font-size: 11px !important; }
+.glossary-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
+.glossary-card { min-width: 0; padding: 17px; background: #e8e5dc; border: 1px solid #d2cfc5; }
+.glossary-card h3 { margin: 9px 0 7px; }
+.glossary-card p { margin: 7px 0; font-size: 12px; line-height: 1.7; }
+.glossary-card .glossary-example { color: #77736a; font-size: 11px; }
+.glossary-example strong { color: #171717; }
 .toolkit-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 28px; border-top: 1px solid #d2cfc5; border-left: 1px solid #d2cfc5; }
 .toolkit-card { min-width: 0; padding: 18px; background: #e8e5dc; border-right: 1px solid #d2cfc5; border-bottom: 1px solid #d2cfc5; }
 .toolkit-card h3 { margin: 10px 0 7px; }
@@ -720,6 +728,7 @@ body {
   .learn-layout { grid-template-columns: minmax(0, 1fr); gap: 35px; padding-top: 44px; }
   .learn-toc { position: static; display: flex; min-width: 0; max-width: 100%; overflow-x: auto; gap: 16px; border-left: 0; border-bottom: 1px solid #c7c3b7; padding: 0 0 12px; }
   .learn-toc a { flex: 0 0 auto; white-space: nowrap; }
+  .glossary-grid { grid-template-columns: 1fr; }
   .practice-grid { grid-template-columns: 1fr; }
   .lab-fields { grid-template-columns: 1fr; }
   .toolkit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
