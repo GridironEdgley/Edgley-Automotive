@@ -603,6 +603,22 @@ WHERE id = 1;`}</CodeBlock>
               <p>In a real app, the front end should not get broad database access. A secure back end checks who is making a request and what they are allowed to do. Use parameterized queries rather than joining user-entered text into SQL, which helps prevent SQL injection. Never paste private database passwords or service keys into browser code or AI chats.</p>
               <h3>Vercel helps you find deployment problems</h3>
               <p>Vercel can build and host a website. Its build logs show problems that stop a new version from building; runtime logs show errors from server-side functions. Vercel does not automatically repair your source code—you use the error clues to make and test a code change.</p>
+              <h3>What “Root Directory” means in Vercel</h3>
+              <p>The Root Directory is the folder where Vercel starts looking for project files and running its build. It is not the folder where the finished website goes—that is the <strong>Output Directory</strong>. For this workspace, the repository root contains <code>pnpm-workspace.yaml</code> and shared packages, while the Edgley app is nested under <code>artifacts/edgley-detailing</code>.</p>
+              <CodeBlock label="Simplified folder map">{`Repository root
+├── pnpm-workspace.yaml
+├── artifacts/
+│   └── edgley-detailing/   ← this website
+└── lib/
+    └── api-client-react/   ← shared workspace package`}</CodeBlock>
+              <p><strong>For this project, leave Root Directory at the repository root (the default).</strong> The Edgley app declares a shared workspace package from the <code>lib</code> folder. Vercel warns that setting an app’s root to a subfolder prevents it from accessing files outside that folder, so pointing Root Directory directly at <code>artifacts/edgley-detailing</code> could make workspace dependencies unavailable.</p>
+              <ol>
+                <li>In Vercel, open the project’s <strong>Settings → Build and Deployment</strong>.</li>
+                <li>Keep <strong>Root Directory</strong> set to the repository root. You can keep the setting empty/default when the repository root is selected.</li>
+                <li>Set the build command to build only this website from the workspace root:</li>
+              </ol>
+              <CodeBlock label="Vercel Build Command">{`PORT=23599 BASE_PATH=/ pnpm --filter @workspace/edgley-detailing run build`}</CodeBlock>
+              <p>Then set <strong>Output Directory</strong> to <code>artifacts/edgley-detailing/dist/public</code>. In short: Root Directory tells Vercel where to start; Build Command tells it what to run; Output Directory tells it which finished files to publish. These settings are instructions for a future Vercel setup—this site is still hosted in Replit.</p>
               <ol>
                 <li>In Vercel, open the project and choose <strong>Deployments</strong>. Select the deployment that failed, then open its <strong>Build Logs</strong>.</li>
                 <li>Look for the first clear error, plus the file name, line number, or failed command. A later error may only be a result of the first one.</li>
@@ -622,7 +638,7 @@ unrelated files. Then tell me how to test the fix locally.`}</CodeBlock>
                 <strong>For this Edgley site:</strong> It is currently previewed in Replit and is not connected to Vercel or a database. You will not see this site’s real deployment logs in Vercel until you set up a Vercel project. Before sharing a log with AI, remove passwords, access tokens, private URLs, and customer information.
               </div>
               <p className="tool-links">
-                Official references: <a href="https://vercel.com/docs/deployments/troubleshoot-a-build" target="_blank" rel="noreferrer">Vercel build troubleshooting</a>, <a href="https://vercel.com/docs/observability/runtime-logs" target="_blank" rel="noreferrer">Vercel runtime logs</a>, and <a href="https://supabase.com/docs/guides/database/overview" target="_blank" rel="noreferrer">Supabase database basics</a>.
+                Official references: <a href="https://vercel.com/docs/deployments/configure-a-build#root-directory" target="_blank" rel="noreferrer">Vercel Root Directory</a>, <a href="https://vercel.com/docs/deployments/troubleshoot-a-build" target="_blank" rel="noreferrer">Vercel build troubleshooting</a>, <a href="https://vercel.com/docs/observability/runtime-logs" target="_blank" rel="noreferrer">Vercel runtime logs</a>, and <a href="https://supabase.com/docs/guides/database/overview" target="_blank" rel="noreferrer">Supabase database basics</a>.
               </p>
             </section>
           </article>
