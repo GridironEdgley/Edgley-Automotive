@@ -26,7 +26,7 @@ const practiceSteps = [
 ];
 
 function HeadlinePractice() {
-  const [phrase, setPhrase] = useState('Work Hard.');
+  const [phrase, setPhrase] = useState('Learn by doing.');
   const [completed, setCompleted] = useState<string[]>([]);
   const isComplete = (step: string) => completed.includes(step);
 
@@ -57,7 +57,7 @@ function HeadlinePractice() {
           <span>LIVE PREVIEW</span>
           <strong>{phrase || 'Your headline appears here.'}</strong>
         </div>
-        <CodeBlock label="The idea behind the demo">{`const [phrase, setPhrase] = useState('No shortcuts.');
+        <CodeBlock label="The idea behind the demo">{`const [phrase, setPhrase] = useState('Learn by doing.');
 
 <input
   value={phrase}
@@ -97,7 +97,7 @@ function HeadlinePractice() {
 }
 
 function ReverseEngineerLab() {
-  const [title, setTitle] = useState('Interior detailing');
+  const [title, setTitle] = useState('AI learning path');
   const [spacing, setSpacing] = useState(20);
   const [accent, setAccent] = useState<'yellow' | 'cream' | 'mint'>('yellow');
   const [showExplanation, setShowExplanation] = useState(false);
@@ -159,7 +159,7 @@ function ReverseEngineerLab() {
         >
           <div className="practice-label">Live sample</div>
           <h3>{title || 'Your card title'}</h3>
-          <p>Change a control and watch this card update. This sample is separate from the real business page.</p>
+          <p>Change a control and watch this card update. This sample is separate from the real AI Guide homepage.</p>
         </article>
       </div>
       {showExplanation && (
@@ -294,7 +294,7 @@ export default function LearnPage() {
             <section id="react">
               <div className="section-kicker">01 / The ingredients</div>
               <h2>React builds the pieces.</h2>
-              <p>React lets us describe reusable pieces of a page—like a service tile or the shared navigation—and compose them into screens. TypeScript adds labels for the kinds of values those pieces expect. In this real app, a small component receives a text label and code snippet:</p>
+              <p>React lets us describe reusable pieces of a page—like a lesson card or the shared navigation—and compose them into screens. TypeScript adds labels for the kinds of values those pieces expect. In this real app, a small component receives a text label and code snippet:</p>
               <CodeBlock label="src/pages/learn.tsx">{`function CodeBlock({ label, children }: {
   label: string;
   children: string;
@@ -342,8 +342,8 @@ Database keeps the information
         ↓
 Back end replies; front end shows a message`}</CodeBlock>
               <p>A real app should not trust the browser alone. Someone can inspect or change browser code, so the back end must check important rules itself. Passwords and private service keys belong on the server, never in front-end code that visitors can download.</p>
-              <h3>What this means for the Edgley site</h3>
-              <p>This Edgley website is currently a front-end site: its pages display information, but they do not send quote requests to a back end or save them in a database. You can change the page and preview it without setting up a server. If you later add saved bookings, customer accounts, or quote requests, you would need a back end or a carefully configured service such as Supabase.</p>
+              <h3>What this means for AI Guide</h3>
+              <p>AI Guide is currently a front-end learning site: its pages explain ideas and include small local practice examples, but they do not send information to a back end or save it in a database. You can change the page and preview it without setting up a server. If you later add accounts or saved progress, you would need a back end or a carefully configured service such as Supabase.</p>
               <div className="notice">
                 <strong>Know the difference:</strong> A button that looks like a form action is not proof that information was delivered. A working submit flow needs a real destination, a successful server response, clear confirmation for the visitor, and safe handling of the saved data.
               </div>
@@ -367,7 +367,7 @@ Back end replies; front end shows a message`}</CodeBlock>
               <h2>Know which file does what.</h2>
               <p>Open the project folder in a code editor such as VS Code. The useful starting points are:</p>
               <ul>
-                <li><strong>src/pages/home.tsx</strong> — the customer-facing Edgley page and its copy.</li>
+                <li><strong>src/pages/home.tsx</strong> — the AI Guide homepage and its copy.</li>
                 <li><strong>src/pages/learn.tsx</strong> — this guide and the instructional examples.</li>
                 <li><strong>src/components/site-layout.tsx</strong> — shared brand header and footer.</li>
                 <li><strong>src/index.css</strong> — colors, type, spacing, responsive rules, and motion.</li>
@@ -379,11 +379,11 @@ Back end replies; front end shows a message`}</CodeBlock>
                 <li>Edit only those words, save the file, and look at the preview again.</li>
                 <li>If the preview looks wrong, undo the last edit before changing more.</li>
               </ol>
-              <p>Keep business copy factual: don't add a price, review, phone number, or promise unless Edgley has confirmed it.</p>
-              <CodeBlock label="JSX example">{`<h3 className="tile-title">Interior</h3>
-<p className="tile-note">
-  Ask about the right service for your vehicle.
-</p>`}</CodeBlock>
+              <p>Keep lesson descriptions honest: say what a tool can and cannot do, and distinguish a practice example from a connected service.</p>
+              <CodeBlock label="JSX example">{`<a className="guide-path" href="/learn#practice">
+  <h3>Make something with code</h3>
+  <p>Try a small coding experiment.</p>
+</a>`}</CodeBlock>
               <p>The <code>className</code> connects this markup to a CSS rule. In JSX, the attribute is spelled <code>className</code> rather than HTML's <code>class</code>.</p>
               <div className="concept-strip">
                 <div><strong>HTML / JSX</strong><span>What appears on the page</span></div>
@@ -435,9 +435,9 @@ change anything. Suggest one small test I can try.`}</CodeBlock>
                 <li><strong>Explain:</strong> Say what you changed and why the page changed. Ask an AI helper to check your explanation, not just do the work for you.</li>
               </ol>
               <h3>Try it with this sample card</h3>
-              <p>Change its words, spacing, or border color. Before each change, guess what you expect; then use “What changed?” to see the idea. Next, use the same observe-and-trace loop on a real service tile on the home page.</p>
+              <p>Change its words, spacing, or border color. Before each change, guess what you expect; then use “What changed?” to see the idea. Next, use the same observe-and-trace loop on a real lesson card on the home page.</p>
               <ReverseEngineerLab />
-              <p>For the real page, start in <code>src/pages/home.tsx</code>. Find a visible phrase, check its <code>className</code>, then search for that class in <code>src/index.css</code>. The Inspector’s Elements panel can help show the rendered element and its styles, but the source files are where you make lasting edits.</p>
+              <p>For the real page, start in <code>src/pages/home.tsx</code>. Find a visible phrase, check its <code>className</code>, then search for that class in <code>src/styles/ai-guide.css</code>. The Inspector’s Elements panel can help show the rendered element and its styles, but the source files are where you make lasting edits.</p>
               <h3 id="reverse-github">Use GitHub to trace a project</h3>
               <p>GitHub can help you reverse engineer a codebase by showing its files and how they changed over time. Only study repositories you own, have permission to use, or are allowed to inspect under their license.</p>
               <ol>
@@ -486,7 +486,7 @@ Then give me one safe exercise and a way to undo it.`}</CodeBlock>
                 <article className="toolkit-card">
                   <div className="practice-label">Where you write</div>
                   <h3>Code editor</h3>
-                  <p>The editor shows your project files and lets you change them. In this Replit project, start with <code>src/pages/home.tsx</code> for the business page.</p>
+                  <p>The editor shows your project files and lets you change them. In this Replit project, start with <code>src/pages/home.tsx</code> for the AI Guide homepage.</p>
                 </article>
                 <article className="toolkit-card">
                   <div className="practice-label">What visitors see</div>
@@ -584,7 +584,7 @@ Then give me one safe exercise and a way to undo it.`}</CodeBlock>
                 <div><strong>MCP</strong><span>Lets a compatible AI app use approved tools.</span></div>
               </div>
               <div className="notice">
-                <strong>For this Edgley site:</strong> These are learning examples, not connected services. The site does not currently send quote requests to an API, and it is not configured with Postman, MCP, or Vercel. Its current preview and hosting remain in Replit.
+                <strong>For AI Guide:</strong> These are learning examples, not connected services. The website does not send information to an API or connect to Postman or MCP, and it is still hosted in Replit. Connecting the Replit assistant to a Vercel account does not deploy this website to Vercel.
               </div>
               <p className="tool-links">
                 Official guides: <a href="https://learning.postman.com/docs/reference/developer-resources/echo-api" target="_blank" rel="noreferrer">Postman Echo</a>, <a href="https://modelcontextprotocol.io/docs/learn/server-concepts" target="_blank" rel="noreferrer">MCP servers</a>, and <a href="https://vercel.com/docs/git" target="_blank" rel="noreferrer">Vercel with Git</a>.
@@ -630,7 +630,7 @@ say what information is missing.`}</CodeBlock>
               <h2>Put this website on GitHub.</h2>
               <p><strong>Git</strong> keeps a history of code changes. A <strong>commit</strong> is a named snapshot in that history. <strong>GitHub</strong> stores a copy online, and <strong>push</strong> sends your committed snapshots there. Making a commit and pushing it are two separate steps.</p>
               <div className="notice">
-                <strong>Important for this Replit project:</strong> Git is already set up on the <code>main</code> branch. It also has a Replit-managed destination named <code>gitsafe-backup</code>; keep it and add GitHub as a second destination. The repository is the whole shared workspace, so it includes the Edgley website and shared project files—not only the <code>artifacts/edgley-detailing</code> folder.
+                <strong>Important for this Replit project:</strong> Git is already set up on the <code>main</code> branch. It also has a Replit-managed destination named <code>gitsafe-backup</code>; keep it and add GitHub as a second destination. The repository is the whole shared workspace, so it includes the AI Guide website and shared project files—not only the <code>artifacts/edgley-detailing</code> folder.
               </div>
               <div className="notice">
                 <strong>Prefer to sync only when you choose?</strong> In Replit, open <strong>Tools → Git</strong> and turn the <strong>Auto-sync</strong> toggle off. You can still make commits and run <code>git push github main</code> whenever you decide the changes are ready. Adding a GitHub destination by itself does not upload your code.
@@ -670,18 +670,18 @@ git remote`}</CodeBlock>
             <section id="supabase">
               <div className="section-kicker">11 / A possible next layer</div>
               <h2>What would Supabase add?</h2>
-              <p>Supabase is a hosted platform that can provide a Postgres database, authentication, file storage, and APIs. A database becomes useful when the site needs to remember information—for example, storing real quote requests or letting the owner update services without editing code.</p>
+              <p>Supabase is a hosted platform that can provide a Postgres database, authentication, file storage, and APIs. A database becomes useful when the site needs to remember information—for example, saving a learner’s progress or letting the owner update lessons without editing code.</p>
               <h3>A simple data shape</h3>
               <p>Before connecting anything, decide what information to store. This is an example of a possible table—not a live table in this project:</p>
-              <CodeBlock label="Example only / not connected">{`quote_requests
-  id            unique request number
-  customer_name visitor's name
-  vehicle       vehicle details
-  created_at    when the request arrived`}</CodeBlock>
-              <p>Then plan who can add, read, and change each row. Supabase uses Row Level Security (RLS) policies for database access. A public website should not be able to read every customer's private request.</p>
+              <CodeBlock label="Example only / not connected">{`practice_notes
+  id            unique note number
+  topic         concept being practiced
+  note          learner's own observation
+  created_at    when the note was added`}</CodeBlock>
+              <p>Then plan who can add, read, and change each row. Supabase uses Row Level Security (RLS) policies for database access. A public website should not be able to read every learner’s private note.</p>
               <AccessControlLab />
               <div className="notice" data-testid="status-no-backend">
-                <strong>Important: Supabase is not connected.</strong> This site currently has no database or backend. The current pages are static frontend content. There is no quote or contact submission that is delivered or saved remotely.
+                <strong>Important: Supabase is not connected.</strong> This site currently has no database or backend. The current pages are static frontend content. There is no learning progress or other user information saved remotely.
               </div>
               <p>Connecting a database is not just adding a URL. It requires a specific feature, a data model, secure access policies, and a clear plan for who can read or change information. Never put a private service-role key in browser code. The current site can stay simple until you want a feature that needs saved data.</p>
             </section>
@@ -716,14 +716,14 @@ WHERE id = 1;`}</CodeBlock>
               <h3>Vercel helps you find deployment problems</h3>
               <p>Vercel can build and host a website. Its build logs show problems that stop a new version from building; runtime logs show errors from server-side functions. Vercel does not automatically repair your source code—you use the error clues to make and test a code change.</p>
               <h3>What “Root Directory” means in Vercel</h3>
-              <p>The Root Directory is the folder where Vercel starts looking for project files and running its build. It is not the folder where the finished website goes—that is the <strong>Output Directory</strong>. For this workspace, the repository root contains <code>pnpm-workspace.yaml</code> and shared packages, while the Edgley app is nested under <code>artifacts/edgley-detailing</code>.</p>
+              <p>The Root Directory is the folder where Vercel starts looking for project files and running its build. It is not the folder where the finished website goes—that is the <strong>Output Directory</strong>. For this workspace, the repository root contains <code>pnpm-workspace.yaml</code> and shared packages, while the AI Guide app is nested under <code>artifacts/edgley-detailing</code>.</p>
               <CodeBlock label="Simplified folder map">{`Repository root
 ├── pnpm-workspace.yaml
 ├── artifacts/
 │   └── edgley-detailing/   ← this website
 └── lib/
     └── api-client-react/   ← shared workspace package`}</CodeBlock>
-              <p><strong>For this project, leave Root Directory at the repository root (the default).</strong> The Edgley app declares a shared workspace package from the <code>lib</code> folder. Vercel warns that setting an app’s root to a subfolder prevents it from accessing files outside that folder, so pointing Root Directory directly at <code>artifacts/edgley-detailing</code> could make workspace dependencies unavailable.</p>
+              <p><strong>For this project, leave Root Directory at the repository root (the default).</strong> The app imports a shared workspace package from the <code>lib</code> folder. Vercel warns that setting an app’s root to a subfolder prevents it from accessing files outside that folder, so pointing Root Directory directly at <code>artifacts/edgley-detailing</code> could make workspace dependencies unavailable.</p>
               <ol>
                 <li>In Vercel, open the project’s <strong>Settings → Build and Deployment</strong>.</li>
                 <li>Keep <strong>Root Directory</strong> set to the repository root. You can keep the setting empty/default when the repository root is selected.</li>
@@ -748,7 +748,7 @@ Point out the first error, the file or command involved,
 and one small source-code fix to try. Don't change
 unrelated files. Then tell me how to test the fix locally.`}</CodeBlock>
               <div className="notice">
-                <strong>For this Edgley site:</strong> It is currently previewed in Replit and is not connected to Vercel or a database. You will not see this site’s real deployment logs in Vercel until you set up a Vercel project. Before sharing a log with AI, remove passwords, access tokens, private URLs, and customer information.
+                <strong>For AI Guide:</strong> It is currently hosted in Replit and is not connected to a Vercel project or database. You will not see this site’s real deployment logs in Vercel until you set up a project for it. Before sharing a log with AI, remove passwords, access tokens, private URLs, and personal information.
               </div>
               <p className="tool-links">
                 Official references: <a href="https://vercel.com/docs/deployments/configure-a-build#root-directory" target="_blank" rel="noreferrer">Vercel Root Directory</a>, <a href="https://vercel.com/docs/deployments/troubleshoot-a-build" target="_blank" rel="noreferrer">Vercel build troubleshooting</a>, <a href="https://vercel.com/docs/observability/runtime-logs" target="_blank" rel="noreferrer">Vercel runtime logs</a>, and <a href="https://supabase.com/docs/guides/database/overview" target="_blank" rel="noreferrer">Supabase database basics</a>.
@@ -757,8 +757,8 @@ unrelated files. Then tell me how to test the fix locally.`}</CodeBlock>
           </article>
         </div>
         <div className="learn-end">
-          <div><div className="eyebrow">Back to the business</div><p>Return to Edgley's service overview.</p></div>
-          <Link href="/" className="button-yellow" data-testid="link-return-home">Return to home <span aria-hidden="true">→</span></Link>
+          <div><div className="eyebrow">Back to the AI Guide</div><p>Return to the learning home page.</p></div>
+          <Link href="/" className="button-yellow" data-testid="link-return-home">Return to the AI Guide <span aria-hidden="true">→</span></Link>
         </div>
       </main>
     </>
