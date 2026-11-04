@@ -1,2 +1,3 @@
 - [Edgley site context](edgley-site-context.md) — the user owns the original site, but its historical source was unavailable during reconstruction.
 - [AI Guide purpose](ai-guide-purpose.md) — the website and workspace are the user's safe, hands-on learning tool for AI and related systems.
+- [Vite build environment](vite-build-environment.md) — Vite configs are evaluated during builds, so Replit-only PORT and BASE_PATH values need safe defaults.
