@@ -2,7 +2,7 @@ import { useEffect, useState, type MouseEvent, type ReactNode } from 'react';
 import { Link, useLocation } from 'wouter';
 import { ArrowRight, Compass, Menu, X } from 'lucide-react';
 import '../styles/ai-guide.css';
-
+import { Analytics } from '@vercel/analytics/react';
 export function SiteLayout({ children }: { children: ReactNode }) {
   const [location] = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -66,6 +66,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
         <span>AI Guide · A little learning, a lot of curiosity</span>
         <Link href="/learn" data-testid="link-footer-learn" onClick={() => setMenuOpen(false)}>All lessons <ArrowRight size={12} aria-hidden="true" /></Link>
         <span>Start small. Keep exploring.</span>
+        <Analytics />
       </footer>
     </div>
   );
