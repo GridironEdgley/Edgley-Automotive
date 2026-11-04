@@ -1,114 +1,80 @@
-import { ArrowRight } from 'lucide-react';
+import {
+  ArrowDown,
+  ArrowRight,
+  BookOpen,
+  Code2,
+  ShieldCheck,
+  Sparkles,
+  Wrench,
+} from 'lucide-react';
 import { Link } from 'wouter';
-import brandCard from '@assets/business-card-side-1_480_1793739431141.png';
 
 export default function HomePage() {
   return (
-    <>
-      <main>
-        <section className="hero">
-          <div className="fade-in">
-            <div className="eyebrow">Mobile detailing · Dallas–Fort Worth</div>
-            <h1>Clean lines.<br /><span>No shortcuts.</span></h1>
-            <p className="hero-copy">Owner-operated mobile automotive detailing, with care for the details inside and out. Edgley brings a hands-on approach to the vehicle you depend on every day.</p>
-            <div className="hero-actions">
-              <a className="button-yellow" href="#services" data-testid="link-explore-services">Explore services <ArrowRight size={15} /></a>
-              <a className="text-link" href="#contact" data-testid="link-contact-information">How to get in touch</a>
-            </div>
+    <main>
+      <section className="guide-hero" aria-labelledby="guide-home-title">
+        <div className="guide-hero-copy">
+          <div className="guide-eyebrow">A friendly starting point</div>
+          <h1 id="guide-home-title">Curious about AI?<br />Start <em>right here.</em></h1>
+          <p className="guide-lede">Learn what AI is, try a little code, and make sense of the tools along the way. No experience needed — start with one small question.</p>
+          <div className="guide-hero-actions">
+            <Link className="guide-button" href="/learn">
+              Find your first lesson <ArrowRight aria-hidden="true" />
+            </Link>
+            <Link className="guide-quiet-link" href="/learn#practice">
+              <ArrowDown aria-hidden="true" /> See what you can try
+            </Link>
           </div>
-          <figure className="hero-art fade-in">
-            <img src={brandCard} alt="Edgley Automotive Detailing business card artwork, featuring a line drawing of a car and the words No shortcuts." data-testid="img-edgley-brand-artwork" />
-            <figcaption className="hero-stamp">Interior / Exterior</figcaption>
-          </figure>
-        </section>
-
-        <div className="ticker" aria-label="Edgley service focus">
-          <div className="ticker-track"><span>Mobile detailing</span><span>Dallas–Fort Worth</span><span>Interior / Exterior</span><span>No shortcuts.</span></div>
         </div>
-
-        <section className="section-pad intro-section" id="approach">
-          <div>
-            <div className="section-kicker">01 / The Edgley approach</div>
-            <p className="intro-copy">Detailing is a series of small decisions made with care. The promise is simple: show up, work hands-on, and don't skip the parts that make the difference.</p>
+        <div className="guide-art" role="img" aria-label="A sample first coding lesson showing a computer printing Hello, world">
+          <div className="guide-orbit" />
+          <div className="guide-sun" />
+          <div className="guide-learning-card">
+            <div className="guide-card-top"><span>Tiny experiment / 01</span><span className="guide-card-dot" /></div>
+            <div className="guide-card-title">Make a computer<br />say hello.</div>
+            <div className="guide-code"><b>print</b>(&quot;Hello, world!&quot;)<br /><span aria-hidden="true">→ Hello, world!</span></div>
+            <div className="guide-card-bottom"><span>A first line of code</span><strong>You made it</strong></div>
           </div>
-          <div>
-            <h2 className="section-title">The finish is in <em>the details.</em></h2>
-            <div className="principles">
-              <article className="principle">
-                <span className="principle-num">01 — OWNER-OPERATED</span>
-                <h3>A personal touch</h3>
-                <p>Edgley is owner-operated. The work is approached with care, not passed off as a faceless process.</p>
-              </article>
-              <article className="principle">
-                <span className="principle-num">02 — MOBILE</span>
-                <h3>At your vehicle</h3>
-                <p>Mobile detailing across the Fort Worth area. Specific availability and service area details should be confirmed directly.</p>
-              </article>
-              <article className="principle">
-                <span className="principle-num">03 — NO SHORTCUTS</span>
-                <h3>Inside and out</h3>
-                <p>Interior and exterior detailing are the focus. The work is about the vehicle, not just the easy-to-see parts.</p>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section className="service-panel" id="services">
-          <div className="service-head">
-            <div>
-              <div className="section-kicker">02 / What Edgley does</div>
-              <h2 className="section-title" style={{ marginTop: 15 }}>Two sides. <em>One standard.</em></h2>
-            </div>
-            <p>Service details, vehicle fit, and availability can vary. Reach out through a verified business channel before booking; none is published here yet.</p>
-          </div>
-          <div className="service-pair">
-            <article className="service-tile">
-              <span className="tile-meta">A / THE CABIN</span>
-              <div>
-                <h3 className="tile-title">Interior</h3>
-                <p className="tile-note">A considered clean for the space you spend your time in. Scope and options are confirmed directly with Edgley.</p>
-              </div>
-              <span className="tile-meta">COMFORT · CARE · DETAIL</span>
-            </article>
-            <article className="service-tile dark-tile">
-              <span className="tile-meta">B / THE EXTERIOR</span>
-              <div>
-                <h3 className="tile-title">Exterior</h3>
-                <p className="tile-note">A hands-on refresh for the vehicle's exterior. Ask about the right service for your vehicle and its condition.</p>
-              </div>
-              <span className="tile-meta">PRESENTATION · FINISH · DETAIL</span>
-            </article>
-          </div>
-          <div className="service-foot">SERVICE SCOPE, PRICING, AND AVAILABILITY ARE NOT LISTED ON THIS SITE.</div>
-        </section>
-
-        <section className="promise">
-          <div className="promise-left">
-            <div className="eyebrow">The standard</div>
-            <h2>No<br /><span>shortcuts.</span></h2>
-          </div>
-          <div className="promise-right">
-            <div className="promise-rule" />
-            <p>It's the line on the card, and the idea behind the work. Take the time to look closer. Treat each part of the vehicle with attention. Leave the rushed version for someone else.</p>
-            <p>Edgley Automotive Detailing is an owner-operated mobile detailing business serving Dallas–Fort Worth.</p>
-          </div>
-        </section>
-
-        <section className="contact-section" id="contact">
-          <div>
-            <div className="section-kicker">03 / Next step</div>
-            <h2 className="section-title" style={{ marginTop: 15 }}>Start with a <em>conversation.</em></h2>
-          </div>
-          <div className="contact-note" data-testid="status-contact-details">
-            <strong>Business contact details aren't verified here.</strong>
-            <p>This first version does not list a phone number, email address, or booking form. We won't pretend a message is delivered or saved. Use a contact method you already have for Edgley to ask about service scope, availability, and pricing.</p>
-          </div>
-        </section>
-      </main>
-      <div className="learn-end">
-        <div><div className="eyebrow">Curious about the build?</div><p>This website is a small React app. See the beginner guide to how it works.</p></div>
-        <Link className="button-yellow" href="/learn" data-testid="link-learning-guide">Open the learning guide <ArrowRight size={15} /></Link>
+          <div className="guide-sticker"><Sparkles aria-hidden="true" /><span>Small steps<br />count</span></div>
+        </div>
+      </section>
+      <div className="guide-ribbon" aria-label="What you can learn">
+        <div className="guide-ribbon-inner"><span>Learn by trying</span><span>Plain-language explanations</span><span>Make something small</span><span>Come back curious</span></div>
       </div>
-    </>
+      <section className="guide-content" aria-labelledby="guide-path-title">
+        <aside className="guide-safety" aria-label="Safe practice">
+          <span className="guide-safety-icon"><ShieldCheck aria-hidden="true" /></span>
+          <div className="guide-safety-copy">
+            <strong>Safe to explore</strong>
+            <p>Practice activities use sample data in your browser. They don’t connect to your real accounts or save changes.</p>
+          </div>
+          <Link className="guide-safety-link" href="/learn#practice">How practice works <ArrowRight aria-hidden="true" /></Link>
+        </aside>
+        <div className="guide-section-head">
+          <div><div className="guide-section-kicker">Pick a path · go at your pace</div><h2 id="guide-path-title">What would you like<br />to figure out?</h2></div>
+          <p>Each lesson is a small step. Start anywhere, follow your curiosity, and come back whenever you like.</p>
+        </div>
+        <div className="guide-path-grid">
+          <Link className="guide-path primary-path" href="/learn#practice">
+            <div className="guide-path-top"><span className="guide-path-number">01 / TRY IT</span><span className="guide-path-icon"><Code2 aria-hidden="true" /></span></div>
+            <div><h3>Make something<br />with code</h3><p>Start with a tiny experiment and see what your instructions can do.</p><span className="guide-path-link">Try a practice lesson <ArrowRight aria-hidden="true" /></span></div>
+          </Link>
+          <Link className="guide-path ai-path" href="/learn#ai">
+            <div className="guide-path-top"><span className="guide-path-number">02 / GET THE IDEA</span><span className="guide-path-icon"><Sparkles aria-hidden="true" /></span></div>
+            <div><h3>Get to know AI</h3><p>What it can do, how it learns, and where people fit in.</p><span className="guide-path-link">Explore AI basics <ArrowRight aria-hidden="true" /></span></div>
+          </Link>
+          <Link className="guide-path" href="/learn#coding-words">
+            <div className="guide-path-top"><span className="guide-path-number">03 / LOOK IT UP</span><span className="guide-path-icon"><BookOpen aria-hidden="true" /></span></div>
+            <div><h3>Decode the words</h3><p>Clear, friendly explanations for the terms you keep hearing.</p><span className="guide-path-link">Browse coding words <ArrowRight aria-hidden="true" /></span></div>
+          </Link>
+        </div>
+      </section>
+      <section className="guide-bottom" aria-labelledby="guide-toolkit-title">
+        <div className="guide-next">
+          <div className="guide-next-copy"><div className="guide-section-kicker">Keep useful things close</div><h2 id="guide-toolkit-title">Your beginner toolkit</h2><p>A simple collection of starting points for learning about AI and code.</p></div>
+          <Link className="guide-button" href="/learn#toolkit">Open the toolkit <Wrench aria-hidden="true" /></Link>
+        </div>
+      </section>
+    </main>
   );
 }
